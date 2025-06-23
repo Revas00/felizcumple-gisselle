@@ -7,41 +7,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Playfair Display', serif;
       background: #0b0c10;
+      font-family: 'Playfair Display', serif;
       color: #ff4c74;
-      overflow: hidden;
       height: 100vh;
-      width: 100vw;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .background {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .content {
       position: relative;
       z-index: 10;
-      height: 100vh;
+      height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
-      padding: 0 20px;
+      padding: 20px;
     }
 
     h1 {
       font-size: 2.8em;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.5em;
       animation: fadeIn 1.5s ease-in;
     }
 
     p {
       font-size: 1.3em;
-      max-width: 520px;
+      max-width: 600px;
       line-height: 1.6em;
       animation: fadeIn 2s ease-in;
     }
@@ -51,12 +60,61 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .stars, .emojis {
+    .star {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 1;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px); opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2em;
+      opacity: 0.12;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.1; }
+      50% { transform: translateY(-200px); opacity: 0.25; }
+      100% { transform: translateY(0); opacity: 0.1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fundo animado -->
+  <div class="background" id="background"></div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
+    <p>
+      Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.<br>
+      En tu día, solo quería recordarte lo especial que eres para mí.<br>
+      Que este nuevo año te regale razones para sonreír, y quizás…<br>
+      también momentos para que sigamos descubriéndonos.<br><br>
+      – Tu casi, Jules. ⭐
+    </p>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const bg = document.getElementById("background");
+
+    // Criar estrelas
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * -100 + "vh";
+      star.style.animationDuration = (8 + Math.random() * 8) + "s";
+      star.style.animationDelay = Math.random() * 5 + "s";
+      bg.appendChild(star);
