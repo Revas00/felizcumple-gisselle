@@ -6,33 +6,20 @@
   <title>Feliz Cumpleaños Gisselle</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    * {
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #0b0c10;
-      font-family: 'Playfair Display', serif;
-      color: #ff4c74;
-      height: 100vh;
       overflow: hidden;
-      position: relative;
-    }
-
-    .background {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
+      font-family: 'Playfair Display', serif;
+      background-color: #0b0c10;
+      color: #ff4c74;
       height: 100%;
-      z-index: 0;
-      pointer-events: none;
+      width: 100%;
     }
 
     .content {
       position: relative;
-      z-index: 10;
+      z-index: 2;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -44,7 +31,7 @@
 
     h1 {
       font-size: 2.8em;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
       animation: fadeIn 1.5s ease-in;
     }
 
@@ -60,14 +47,34 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .star {
+    .background {
       position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .star, .emoji {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .star {
       width: 2px;
       height: 2px;
       background: white;
       border-radius: 50%;
-      opacity: 0.8;
       animation: fall linear infinite;
+    }
+
+    .emoji {
+      font-size: 2em;
+      opacity: 0.15;
+      animation: float 15s infinite ease-in-out;
     }
 
     @keyframes fall {
@@ -75,25 +82,16 @@
       100% { transform: translateY(110vh); opacity: 0; }
     }
 
-    .emoji {
-      position: absolute;
-      font-size: 2em;
-      opacity: 0.12;
-      animation: float 15s infinite ease-in-out;
-    }
-
     @keyframes float {
       0% { transform: translateY(0); opacity: 0.1; }
-      50% { transform: translateY(-200px); opacity: 0.25; }
+      50% { transform: translateY(-200px); opacity: 0.3; }
       100% { transform: translateY(0); opacity: 0.1; }
     }
   </style>
 </head>
 <body>
-  <!-- Fundo animado -->
-  <div class="background" id="background"></div>
+  <div class="background" id="bg"></div>
 
-  <!-- Conteúdo -->
   <div class="content">
     <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
     <p>
@@ -101,20 +99,36 @@
       En tu día, solo quería recordarte lo especial que eres para mí.<br>
       Que este nuevo año te regale razones para sonreír, y quizás…<br>
       también momentos para que sigamos descubriéndonos.<br><br>
-      – Tu casi, Jules. ⭐
+      – Tu casi, Jules. 💫
     </p>
   </div>
 
-  <!-- Scripts -->
   <script>
-    const bg = document.getElementById("background");
+    const bg = document.getElementById("bg");
 
-    // Criar estrelas
+    // Estrelas
     for (let i = 0; i < 100; i++) {
       const star = document.createElement("div");
-      star.className = "star";
+      star.classList.add("star");
       star.style.left = Math.random() * 100 + "vw";
       star.style.top = Math.random() * -100 + "vh";
-      star.style.animationDuration = (8 + Math.random() * 8) + "s";
+      star.style.animationDuration = 8 + Math.random() * 10 + "s";
       star.style.animationDelay = Math.random() * 5 + "s";
       bg.appendChild(star);
+    }
+
+    // Emojis flutuantes
+    const emojis = ["🌠", "🪐", "✨", "🌌", "🚀", "🌙", "⭐"];
+    for (let i = 0; i < 25; i++) {
+      const emoji = document.createElement("div");
+      emoji.classList.add("emoji");
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.top = Math.random() * 100 + "vh";
+      emoji.style.animationDuration = 10 + Math.random() * 10 + "s";
+      emoji.style.fontSize = 1.5 + Math.random() * 2 + "em";
+      bg.appendChild(emoji);
+    }
+  </script>
+</body>
+</html>
