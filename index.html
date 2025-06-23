@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Cumpleaños Gisselle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to bottom right, #0b0c10, #1f1f1f);
+      color: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #ff6f91;
+      margin-bottom: 0.3em;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 500px;
+      margin: 0 1em;
+      line-height: 1.5em;
+      animation: fadeIn 2s ease-in;
+      z-index: 1;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 1.8em;
+      opacity: 0.2;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.1; }
+      50% { transform: translateY(-200px); opacity: 0.3; }
+      100% { transform: translateY(0); opacity: 0.1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
+  <p>Hoy celebro tu vida con gratitud. Tu presencia hace que el mundo sea un lugar más cálido. Que este nuevo año esté lleno de momentos intensos, ternura, y mucha paz.</p>
+
+  <script>
+    const emojis = ["🌠", "🪐", "✨", "🌌", "🚀", "🌙", "⭐"];
+    for (let i = 0; i < 25; i++) {
+      const el = document.createElement("div");
+      el.className = "emoji";
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + "%";
+      el.style.top = Math.random() * 100 + "%";
+      el.style.animationDuration = 10 + Math.random() * 10 + "s";
+      el.style.fontSize = 1.5 + Math.random() * 2 + "em";
+      document.body.appendChild(el);
+    }
+  </script>
+</body>
+</html>
