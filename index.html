@@ -94,41 +94,22 @@
   <div>
     <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
     <p>
-  Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.  
-  En tu día, solo quería recordarte lo especial que eres para mí.  
-  Que este nuevo año te regale razones para sonreír, y quizás…  
-  también momentos para que sigamos descubriéndonos.  
-  <br><br>
-  – Tu casi, Jules. 💫
-</p>
-
+      Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.  
+      En tu día, solo quería recordarte lo especial que eres para mí.  
+      Que este nuevo año te regale razones para sonreír, y quizás…  
+      también momentos para que sigamos descubriéndonos.  
+      <br><br>
+      – Tu casi, Jules. ⭐
+    </p>
   </div>
 
   <script>
-    // Criar estrelas
+    // Criar estrelas com animação mais lenta
     const container = document.getElementById("stars-container");
     for (let i = 0; i < 100; i++) {
       const star = document.createElement("div");
       star.className = "star";
       star.style.left = Math.random() * 100 + "vw";
       star.style.top = Math.random() * -100 + "vh";
-      star.style.animationDuration = (2 + Math.random() * 4) + "s";
-      star.style.animationDelay = Math.random() * 5 + "s";
-      container.appendChild(star);
-    }
-
-    // Criar emojis espaciais
-    const emojis = ["🌠", "🪐", "✨", "🌌", "🚀", "🌙", "⭐"];
-    for (let i = 0; i < 25; i++) {
-      const el = document.createElement("div");
-      el.className = "emoji";
-      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      el.style.left = Math.random() * 100 + "%";
-      el.style.top = Math.random() * 100 + "%";
-      el.style.animationDuration = 10 + Math.random() * 10 + "s";
-      el.style.fontSize = 1.5 + Math.random() * 2 + "em";
-      document.body.appendChild(el);
-    }
-  </script>
-</body>
-</html>
+      // duração aumentada: entre 6s e 12s
+      star.style.animationDuration
