@@ -10,21 +10,22 @@
       margin: 0;
       padding: 0;
       font-family: 'Playfair Display', serif;
-      background: linear-gradient(to bottom right, #0b0c10, #1f1f1f);
+      background: #0b0c10;
       color: #ff4c74;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
-      overflow: hidden;
+      position: relative;
     }
 
     h1 {
       font-size: 2.8em;
       margin-bottom: 0.3em;
       animation: fadeIn 1.5s ease-in;
+      z-index: 1;
     }
 
     p {
@@ -36,11 +37,48 @@
       z-index: 1;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
     .emoji {
       position: absolute;
       font-size: 1.8em;
-      opacity: 0.2;
+      opacity: 0.15;
       animation: float 15s infinite ease-in-out;
+      z-index: 0;
     }
 
     @keyframes float {
@@ -48,24 +86,38 @@
       50% { transform: translateY(-200px); opacity: 0.3; }
       100% { transform: translateY(0); opacity: 0.1; }
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
-  <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
-  <p>
-    Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.  
-    En tu día, solo quería recordarte lo especial que eres para mí.  
-    Que este nuevo año te regale razones para sonreír, y quizás…  
-    también momentos para que sigamos descubriéndonos. 
-    - Tu casi, Jules 💫
-  </p>
+  <div class="stars" id="stars-container"></div>
+
+  <div>
+    <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
+    <p>
+  Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.  
+  En tu día, solo quería recordarte lo especial que eres para mí.  
+  Que este nuevo año te regale razones para sonreír, y quizás…  
+  también momentos para que sigamos descubriéndonos.  
+  <br><br>
+  – Tu casi, Jules. 💫
+</p>
+
+  </div>
 
   <script>
+    // Criar estrelas
+    const container = document.getElementById("stars-container");
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * -100 + "vh";
+      star.style.animationDuration = (2 + Math.random() * 4) + "s";
+      star.style.animationDelay = Math.random() * 5 + "s";
+      container.appendChild(star);
+    }
+
+    // Criar emojis espaciais
     const emojis = ["🌠", "🪐", "✨", "🌌", "🚀", "🌙", "⭐"];
     for (let i = 0; i < 25; i++) {
       const el = document.createElement("div");
