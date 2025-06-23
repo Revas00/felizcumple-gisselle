@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Cumpleaños Gisselle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to bottom right, #1c1c1c, #2a2a2a);
+      color: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #ff6f91;
+      margin-bottom: 0.3em;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 500px;
+      margin: 0 1em;
+      line-height: 1.5em;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .button {
+      margin-top: 2em;
+      padding: 0.7em 1.8em;
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .button:hover {
+      background-color: #ff4c74;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 111, 145, 0.1);
+      animation: float 12s infinite ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translateY(-200px);
+        opacity: 0.05;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 0.2;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>¡Feliz Cumpleaños, Gisselle!</h1>
+  <p>Hoy celebro tu vida con gratitud. Tu presencia hace que el mundo sea un lugar más cálido. Que este nuevo año esté lleno de momentos intensos, ternura, y mucha paz.</p>
+  <a href="https://tulinkespecial.com" class="button">Ver Sorpresa</a>
+
+  <script>
+    for (let i = 0; i < 15; i++) {
+      const c = document.createElement("div");
+      c.className = "circle";
+      const size = Math.random() * 80 + 20;
+      c.style.width = size + "px";
+      c.style.height = size + "px";
+      c.style.left = Math.random() * 100 + "%";
+      c.style.top = Math.random() * 100 + "%";
+      c.style.animationDuration = 10 + Math.random() * 10 + "s";
+      document.body.appendChild(c);
+    }
+  </script>
+</body>
+</html>
