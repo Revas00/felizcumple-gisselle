@@ -60,8 +60,8 @@
     .star {
       position: absolute;
       width: 2px;
-      height: 20px;
-      background: linear-gradient(to bottom, white, transparent);
+      height: 16px;
+      background: linear-gradient(to top, white, transparent);
       opacity: 0.7;
       animation: fall linear infinite;
     }
@@ -102,7 +102,7 @@
   <script>
     const bg = document.getElementById("bg");
 
-    // Estrelas com rastro para baixo
+    // Estrelas com rastro invertido
     for (let i = 0; i < 100; i++) {
       const star = document.createElement("div");
       star.classList.add("star");
