@@ -57,37 +57,31 @@
       pointer-events: none;
     }
 
-    .star, .emoji {
-      position: absolute;
-      user-select: none;
-      pointer-events: none;
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
-      opacity: 0.85;
-      will-change: transform;
-    }
-
     .star {
+      position: absolute;
       width: 2px;
-      height: 10px;
+      height: 20px;
       background: linear-gradient(to bottom, white, transparent);
-      border-radius: 50%;
+      opacity: 0.7;
       animation: fall linear infinite;
     }
 
-    .emoji {
-      font-size: 2em;
-      animation: emojiFall linear infinite;
-      opacity: 0.2;
-    }
-
     @keyframes fall {
-      0% { transform: translateY(-10vh); opacity: 1; }
+      0% { transform: translateY(-20px); opacity: 1; }
       100% { transform: translateY(110vh); opacity: 0; }
     }
 
-    @keyframes emojiFall {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.15; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    .emoji {
+      position: absolute;
+      font-size: 2em;
+      opacity: 0.15;
+      animation: float ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
@@ -108,7 +102,7 @@
   <script>
     const bg = document.getElementById("bg");
 
-    // Estrelas com rastro e queda lenta
+    // Estrelas com rastro para baixo
     for (let i = 0; i < 100; i++) {
       const star = document.createElement("div");
       star.classList.add("star");
@@ -119,16 +113,15 @@
       bg.appendChild(star);
     }
 
-    // Emojis flutuantes e caindo
+    // Emojis flutuando suavemente
     const emojis = ["🌠", "🪐", "✨", "🌌", "🚀", "🌙", "⭐"];
     for (let i = 0; i < 25; i++) {
       const emoji = document.createElement("div");
       emoji.classList.add("emoji");
       emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.top = Math.random() * -100 + "vh";
-      emoji.style.animationDuration = (12 + Math.random() * 10) + "s";
-      emoji.style.animationDelay = Math.random() * 5 + "s";
+      emoji.style.top = Math.random() * 100 + "vh";
+      emoji.style.animationDuration = (10 + Math.random() * 10) + "s";
       emoji.style.fontSize = (1.5 + Math.random() * 2) + "em";
       bg.appendChild(emoji);
     }
