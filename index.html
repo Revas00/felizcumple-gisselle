@@ -59,10 +59,10 @@
 
     .star {
       position: absolute;
-      width: 2px;
-      height: 16px;
+      width: 1px;
+      height: 10px;
       background: linear-gradient(to top, white, transparent);
-      opacity: 0.7;
+      opacity: 0.6;
       animation: fall linear infinite;
     }
 
@@ -102,18 +102,18 @@
   <script>
     const bg = document.getElementById("bg");
 
-    // 🔻 MENOS ESTRELAS: 40
+    // 🔸 Estrelas menores e mais lentas (40)
     for (let i = 0; i < 40; i++) {
       const star = document.createElement("div");
       star.classList.add("star");
       star.style.left = Math.random() * 100 + "vw";
       star.style.top = Math.random() * -100 + "vh";
-      star.style.animationDuration = (10 + Math.random() * 10) + "s";
-      star.style.animationDelay = Math.random() * 5 + "s";
+      star.style.animationDuration = (20 + Math.random() * 20) + "s";
+      star.style.animationDelay = Math.random() * 10 + "s";
       bg.appendChild(star);
     }
 
-    // Emojis flutuantes
+    // Emojis flutuantes suaves
     const emojis = ["🌠", "🪐", "✨", "🌌", "🚀", "🌙", "⭐"];
     for (let i = 0; i < 25; i++) {
       const emoji = document.createElement("div");
