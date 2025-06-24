@@ -1,127 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Feliz Cumpleaños Gisselle</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      margin: 0; padding: 0;
-      overflow: hidden;
-      font-family: 'Playfair Display', serif;
-      background: #0b0c10;
-      color: #ff4c74;
-      height: 100%;
-    }
-    canvas {
-      display: block;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 1;
-    }
-    .content {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 { font-size: 2.8em; animation: fadeIn 1.5s ease-in; }
-    p {
-      font-size: 1.3em; max-width: 600px; line-height: 1.6em;
-      animation: fadeIn 2s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .emoji {
-      position: absolute;
-      font-size: 2em;
-      opacity: 0.15;
-      animation: float ease-in-out infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <canvas id="stars"></canvas>
-  <div class="content">
-    <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
-    <p>
-      Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.<br>
-      En tu día, solo quería recordarte lo especial que eres para mí.<br>
-      Que este nuevo año te regale razones para sonreír, y quizás…<br>
-      también momentos para que sigamos descubriéndonos.<br><br>
-      – Tu casi, Jules. 💫
-    </p>
-  </div>
-  <script>
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    let W = canvas.width = window.innerWidth;
-    let H = canvas.height = window.innerHeight;
+<!-- ... (todo o seu código igual) -->
 
-    window.addEventListener('resize', () => {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    });
+<div class="content">
+  <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
+  <p>
+    Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.<br>
+    En tu día, solo quería recordarte lo especial que eres para mí.<br>
+    Que este nuevo año te regale razones para sonreír, y quizás…<br>
+    también momentos para que sigamos descubriéndonos.<br><br>
+    – Tu casi, Jules. 💫
+  </p>
 
-    class Star {
-      constructor() {
-        this.reset();
-      }
-      reset() {
-        this.x = Math.random() * W;
-        this.y = Math.random() * H;
-        this.size = Math.random() * 1.2 + 0.2;
-        this.speed = (Math.random() * 0.3 + 0.05);
-        this.opacity = Math.random() * 0.5 + 0.3;
-      }
-      update() {
-        this.y += this.speed;
-        if (this.y > H) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,255,255,' + this.opacity + ')';
-        ctx.fill();
-      }
-    }
+  <!-- BOTÃO ADICIONADO AQUI -->
+  <a href="deeper.html" class="go-deeper">Go deeper</a>
+</div>
 
-    const stars = Array.from({ length: 80 }, () => new Star());
+<!-- ... (continua com o <script>) -->
 
-    function animate() {
-      ctx.clearRect(0, 0, W, H);
-      stars.forEach(s => {
-        s.update();
-        s.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // emojis flutuando
-    const emojis = ["🌠","🪐","✨","🌌","🚀","🌙","⭐"];
-    emojis.forEach((emo, i) => {
-      const el = document.createElement('div');
-      el.className = 'emoji';
-      el.textContent = emo;
-      el.style.left = (Math.random() * 80 + 10) + 'vw';
-      el.style.top = (Math.random() * 80 + 10) + 'vh';
-      el.style.animationDuration = (8 + Math.random() * 4) + 's';
-      el.style.fontSize = (1.5 + Math.random() * 1.5) + 'em';
-      document.body.appendChild(el);
-    });
-  </script>
-</body>
-</html>
+<style>
+  /* Adicione este trecho ao final do <style> já existente */
+  .go-deeper {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #aaa;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    z-index: 3;
+  }
+  .go-deeper:hover {
+    opacity: 0.9;
+    color: #ff4c74;
+  }
+</style>
