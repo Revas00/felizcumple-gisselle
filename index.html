@@ -1,32 +1,55 @@
-<!-- ... todo o código anterior mantido ... -->
-
-  <div class="content">
-    <h1>¡Feliz Cumpleaños, Gisselle! 🌌</h1>
-    <p>
-      Tal vez no tengamos etiquetas, pero hay algo en ti que me hace querer estar cerca.<br>
-      En tu día, solo quería recordarte lo especial que eres para mí.<br>
-      Que este nuevo año te regale razones para sonreír, y quizás…<br>
-      también momentos para que sigamos descubriéndonos.<br><br>
-      – Tu casi, Jules. 💫
-    </p>
-
-    <a href="deeper.html" class="go-deeper">Go deeper</a>
-  </div>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Cumpleaños Gisselle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <style>
+    html, body {
+      margin: 0; padding: 0;
+      overflow: hidden;
+      font-family: 'Playfair Display', serif;
+      background: #0b0c10;
+      color: #ff4c74;
+      height: 100%;
+    }
+    canvas {
+      display: block;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 { font-size: 2.8em; animation: fadeIn 1.5s ease-in; }
+    p {
+      font-size: 1.3em; max-width: 600px; line-height: 1.6em;
+      animation: fadeIn 2s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .emoji {
+      position: absolute;
+      font-size: 2em;
+      opacity: 0.15;
+      animation: float ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
     .go-deeper {
       margin-top: 30px;
-      font-size: 0.9em;
-      color: #aaa;
-      text-decoration: none;
-      opacity: 0.4;
-      transition: all 0.3s ease;
-      z-index: 3;
-    }
-    .go-deeper:hover {
-      opacity: 0.9;
-      color: #ff4c74;
-    }
-  </style>
-
-<!-- ... restante do código continua igual, incluindo o <script> ... -->
+      font-size: 0
